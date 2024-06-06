@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nusantara Rebellion</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+      ::-webkit-scrollbar {
+        width: 0px;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #4f3e36;
+      }
+
+      #video-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        opacity: 50%;
+      }
+
+      .content-wrapper {
+        position: relative;
+        z-index: 1;
+      }
+
+      .content {
+        text-align: center;
+        color: D5CEA3;
+        padding: 20px;
+      }
+
+      .main-container {
+        max-width: 800px;
+        margin: 50px auto;
+        text-align: center;
+      }
+
+      h1 {
+        color: #e5e5cb;
+        padding-bottom: 1rem;
+      }
+
+      .pencet {
+        text-decoration: none;
+      }
+
+      .level-card {
+        background-color: #4f3e36;
+        border-radius: 8px;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.296);
+        cursor: pointer;
+        overflow: hidden;
+        margin: 20px 0;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        overflow: hidden;
+      }
+
+      .level-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.296);
+      }
+
+      .level-card img {
+        width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+      }
+
+      .level-card p {
+        margin: 10px 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #e5e5cb;
+      }
+
+      footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      footer .image-footer img {
+        max-width: 2rem;
+        margin-right: 1rem;
+      }
+
+      footer p {
+        font-size: 1rem;
+        color: #e5e5cb;
+        font-weight: 600;
+      }
+
+      .card-description {
+        padding: 10px;
+        color: #e5e5cb;
+        display: none;
+      }
+
+      .level-card:hover .card-description {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="video-background">
+      <video autoplay muted loop id="video-bg">
+        <source src="img/back.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="main-container">
+          <h1>Nusantara Rebellion</h1>
+
+          <a href="PKI.html" class="pencet">
+            <div class="level-card">
+              <img src="img/pki.jpg" alt="PKI Madiun 1948" />
+              <p>PKI Madiun 1948</p>
+              <div class="card-description">
+                Pemberontakan PKI 1948 adalah perlawanan komunis di Indonesia yang terjadi setelah politik otonomi Partai Komunis Indonesia (PKI). Berpusat di Jawa Tengah, pemberontakan tersebut dipicu oleh ketegangan politik
+                pasca-proklamasi kemerdekaan.
+              </div>
+            </div>
+          </a>
+
+          <a href="Kartosuwiryo.html" class="pencet">
+            <div class="level-card">
+              <img src="img/kartosuwiryo.jpg" alt="Pemberontakan Kartosuwiryo Jawa Barat 1948" />
+              <p>Pemberontakan Kartosuwiryo Jawa Barat 1948</p>
+              <div class="card-description">
+                Pemberontakan Kartosuwiryo Jawa Barat 1948 adalah perlawanan di Indonesia yang dipimpin oleh Kartosuwiryo melawan pemerintah pusat. Terjadi di Jawa Barat, dipicu oleh ketidakpuasan terhadap politik sentralisasi pemerintahan.
+              </div>
+            </div>
+          </a>
+
+          <a href="DiTii.html" class="pencet">
+            <div class="level-card">
+              <img src="img/ditii.large" alt="DI/TII" />
+              <p>DI/TII</p>
+              <div class="card-description">
+                Pemberontakan DI/TII adalah gerakan bersenjata di Indonesia yang dipimpin oleh Darul Islam/Tentara Islam Indonesia. Terjadi di Jawa Barat, dimulai pada 1949 sebagai respons terhadap politik pemerintahan yang sentralis.
+              </div>
+            </div>
+          </a>
+
+          <a href="APRA.html" class="pencet">
+            <div class="level-card">
+              <img src="img/APRA.png" alt="DI/TII" />
+              <p>APRA</p>
+              <div class="card-description">
+                Pemberontakan APRA adalah perlawanan militer yang dipimpin oleh Letnan Kolonel Alex Kawilarang dan Mayor Djatikusumo di Indonesia. Terjadi di Jawa Barat pada tahun 1950, menentang dominasi Belanda dalam Tentara Nasional
+                Indonesia.
+              </div>
+            </div>
+          </a>
+
+          <a href="AndiAziz.html" class="pencet">
+            <div class="level-card">
+              <img src="img/andi aziz.jpeg" alt="DI/TII" />
+              <p>Andi Azis</p>
+              <div class="card-description">
+                Pemberontakan Andi Azis adalah perlawanan di Indonesia yang dipimpin oleh Andi Azis melawan pemerintahan Indonesia. Terjadi di Sulawesi Selatan pada 1950, muncul sebagai ketidakpuasan terhadap integrasi wilayah dalam Negara
+                Kesatuan Republik Indonesia.
+              </div>
+            </div>
+          </a>
+
+          <a href="RMS.html" class="pencet">
+            <div class="level-card">
+              <img src="img/rms.jpg" alt="DI/TII" />
+              <p>Republik Maluku Selatan (RMS)</p>
+              <div class="card-description">
+                Pemberontakan Republik Maluku Selatan (RMS) adalah gerakan separatis di Indonesia yang bertujuan memperjuangkan kemerdekaan Maluku Selatan. Terjadi di wilayah Maluku pada 1950-an, muncul akibat ketidakpuasan terhadap
+                integrasi Maluku ke dalam NKRI.
+              </div>
+            </div>
+          </a>
+
+          <a href="PRRI.html" class="pencet">
+            <div class="level-card">
+              <img src="img/prri dan permesta.jpg" alt="DI/TII" />
+              <p>PRRI dan Permesta</p>
+              <div class="card-description">
+                Pemberontakan PRRI dan Permesta adalah gerakan separatis militer-politik di Indonesia. Terjadi di Sumatra Barat (PRRI) dan Sulawesi Utara (Permesta) pada tahun 1950-an, bertujuan menentang otoritas pemerintah pusat yang
+                dianggap sentralis.
+              </div>
+            </div>
+          </a>
+
+          <a href="Batalyon.html" class="pencet">
+            <div class="level-card">
+              <img src="img/batalyon 426.jpg" alt="DI/TII" />
+              <p>Batalyon 426</p>
+              <div class="card-description">
+                Pemberontakan Batalyon 426 adalah insiden di Indonesia di mana pasukan TNI melakukan pemberontakan. Terjadi di Sumatra Barat pada 1950, dipicu oleh ketidakpuasan terhadap kebijakan pemerintah.
+              </div>
+            </div>
+          </a>
+
+          <a href="AUI.html" class="pencet">
+            <div class="level-card">
+              <img src="img/aui.large" alt="DI/TII" />
+              <p>Angkatan Umat Islam (AUI)</p>
+              <div class="card-description">Pemberontakan Angkatan Umat Islam (AUI) adalah gerakan bersenjata yang dipimpin oleh Kartosuwiryo di Indonesia. Terjadi di Jawa Barat pada 1948, bertujuan menegakkan negara Islam.</div>
+            </div>
+          </a>
+
+          <a href="OPM.html" class="pencet">
+            <div class="level-card">
+              <img src="img/opm.jpeg" alt="DI/TII" />
+              <p>Organisasi Papua Merdeka (OPM)</p>
+              <div class="card-description">
+                Pemberontakan Organisasi Papua Merdeka (OPM) adalah gerakan kemerdekaan bersenjata di Papua. Terjadi di provinsi Papua, dipicu oleh ketidakpuasan terhadap pemerintahan Indonesia pasca-integrasi Papua ke NKRI pada 1969.
+              </div>
+            </div>
+          </a>
+
+          <a href="Aceh.html" class="pencet">
+            <div class="level-card">
+              <img src="img/gerakan aceh merdeka.large" alt="DI/TII" />
+              <p>Gerakan Aceh Merdeka</p>
+              <div class="card-description">
+                Pemberontakan Gerakan Aceh Merdeka (GAM) adalah perlawanan bersenjata di Aceh. Terjadi di provinsi Aceh, dipicu oleh ketidakpuasan terhadap pemerintahan Indonesia dan hasrat untuk otonomi atau kemerdekaan.
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="image-footer">
+        <img src="img/Logo.png" alt="logo" />
+      </div>
+      <p>Made By Aqilla Rachel Rabbani | XI PPLG 2</p>
+    </footer>
+  </body>
+</html>

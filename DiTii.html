@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="game.css" />
+    <title>DI/TII</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a href="index.html" class="logo-home">
+          <img src="img/Logo.png" alt="logo-web" />
+        </a>
+      </div>
+      <div class="linking">
+        <a href="index.html" class="home">Back to Home</a>
+      </div>
+    </header>
+    <div class="quiz">
+      <div id="score-container"></div>
+      <div id="quiz-container"></div>
+    </div>
+    <audio id="correct-audio">
+      <source src="img/Correct Answer Sound Effect.mp3" type="audio/mpeg" />
+    </audio>    
+    <script>
+      const quizData = [
+      {
+          question: "Apa singkatan dari DI/TII?",
+          options: ["Daftar Isian Tanah dan Bangunan", "Daftar Identifikasi Tempat Teroris", "Dewan Islam/Teritorial Indonesia", "Dewan Islam/Tempat Terlarang Indonesia"],
+          correctAnswer: "Daftar Identifikasi Tempat Teroris",
+        },
+        {
+          question: "Apa tujuan utama dari DI/TII pada masa perjuangan kemerdekaan Indonesia?",
+          options: ["Memperjuangkan kesejahteraan masyarakat", "Mendirikan negara Islam di Indonesia", "Menjaga keutuhan NKRI", "Mengusir penjajah Belanda"],
+          correctAnswer: "Mendirikan negara Islam di Indonesia",
+        },
+        {
+          question: "Siapakah tokoh yang terkait dengan gerakan DI/TII?",
+          options: ["Soekarno", "Mohammad Hatta", "Abdul Qadir Jailani", "Kartosuwiryo"],
+          correctAnswer: "Kartosuwiryo",
+        },
+        {
+          question: "Kapan gerakan DI/TII umumnya aktif?",
+          options: ["Era Kolonial Belanda", "Era Orde Lama", "Era Orde Baru", "Era Reformasi"],
+          correctAnswer: "Era Kolonial Belanda",
+        },
+        {
+          question: "Apa peran DI/TII dalam sejarah Indonesia?",
+          options: ["Organisasi politik terkemuka", "Gerakan pendidikan", "Gerakan keagamaan", "Organisasi militer pemberontak"],
+          correctAnswer: "Organisasi militer pemberontak",
+        },
+        {
+          question: "Apa dampak dari aktivitas DI/TII terhadap stabilitas Indonesia?",
+          options: ["Meningkatkan stabilitas", "Menyebabkan perpecahan sosial", "Meningkatkan ekonomi", "Memperkuat hubungan internasional"],
+          correctAnswer: "Menyebabkan perpecahan sosial",
+        },
+        {
+          question: "Bagaimana penindakan pemerintah terhadap DI/TII?",
+          options: ["Memberikan dukungan penuh", "Memberikan amnesti", "Melakukan operasi militer", "Memberikan penghargaan"],
+          correctAnswer: "Melakukan operasi militer",
+        },
+        {
+          question: "Apa ideologi yang menjadi dasar gerakan DI/TII?",
+          options: ["Nasionalisme", "Kapitalisme", "Komunisme", "Islamisme"],
+          correctAnswer: "Islamisme",
+        },
+        {
+          question: "Apakah DI/TII masih eksis hingga saat ini?",
+          options: ["Ya", "Tidak", "Hanya di beberapa daerah", "Tergantung situasi politik"],
+          correctAnswer: "Tidak",
+        },
+        {
+          question: "Apa yang membedakan DI/TII dengan gerakan separatis lainnya di Indonesia?",
+          options: ["Tujuan politik", "Asal usul anggota", "Bentuk organisasi", "Sumber pendanaan"],
+          correctAnswer: "Tujuan politik",
+        },
+      ];
+
+      // Fungsi untuk mengacak array pertanyaan
+      function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      }
+
+      // Mengacak array pertanyaan
+      shuffleArray(quizData);
+
+      function shuffleOptions(options) {
+        for (let i = options.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [options[i], options[j]] = [options[j], options[i]];
+        }
+      }
+
+      // Mengacak opsi jawaban untuk setiap pertanyaan
+      quizData.forEach((question) => {
+        shuffleOptions(question.options);
+      });
+
+      const quizContainer = document.getElementById("quiz-container");
+      let currentQuestion = 0;
+      let score = 0;
+
+      function buildQuiz() {
+      if (currentQuestion < quizData.length) {
+        const questionData = quizData[currentQuestion];
+        const questionElement = document.createElement("div");
+        questionElement.innerHTML = `<p>${currentQuestion + 1}. ${questionData.question}</p>`;
+        questionElement.appendChild(document.createElement("br"));
+
+        questionData.options.forEach((option, optionIndex) => {
+          const optionElement = document.createElement("input");
+          optionElement.type = "radio";
+          optionElement.classList.add("btn-check");
+          optionElement.name = `question${currentQuestion}`;
+          optionElement.id = `option${optionIndex + 1}`;
+          optionElement.value = option;
+          optionElement.addEventListener("change", () => checkAnswer(option, questionData.correctAnswer));
+          
+          const labelElement = document.createElement("label");
+          labelElement.classList.add("btn");
+          labelElement.setAttribute("for", `option${optionIndex + 1}`);
+          labelElement.textContent = option;
+
+          questionElement.appendChild(optionElement);
+          questionElement.appendChild(labelElement);
+          questionElement.appendChild(document.createElement("br"));
+        });
+
+        const feedbackElement = document.createElement("div");
+        feedbackElement.id = "feedback";
+        questionElement.appendChild(feedbackElement);
+
+        quizContainer.innerHTML = "";
+        quizContainer.appendChild(questionElement);
+
+        const scoreContainer = document.getElementById("score-container");
+        scoreContainer.innerHTML = `<p id="score">Skor: ${score}</p>`;
+      } else {
+        showQuizResult();
+      }
+    }
+
+    function checkAnswer(userAnswer, correctAnswer) {
+      const feedbackElement = document.getElementById("feedback");
+
+      if (document.querySelector(`input[name="question${currentQuestion}"]:checked`)) {
+        const selectedOption = document.querySelector(`input[name="question${currentQuestion}"]:checked`).value;
+
+        if (selectedOption === correctAnswer) {
+          feedbackElement.textContent = "Jawaban Anda benar!";
+          score += 10;
+          const correctAudio = document.getElementById("correct-audio");
+          correctAudio.play();
+        } else {
+          feedbackElement.textContent = `Jawaban Anda salah. Jawaban yang benar adalah: ${correctAnswer}`;
+        }
+
+        currentQuestion++;
+        setTimeout(buildQuiz, 2000); // Menampilkan pertanyaan berikutnya setelah 2 detik
+      }
+    }
+
+      function showQuizResult() {
+        quizContainer.innerHTML = `<p>Quiz selesai! Skor Anda: ${score}</p>`;
+
+        const backButton = document.createElement("button");
+        backButton.textContent = "Kembali ke Halaman Utama";
+        backButton.addEventListener("click", () => (window.location.href = "index.html"));
+        quizContainer.appendChild(backButton);
+      }
+
+      buildQuiz();
+    </script>
+  </body>
+</html>
